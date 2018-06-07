@@ -18,9 +18,10 @@ $u=$AllUsers->results;
 
 foreach($u as $row)
 {
-         echo $row->userName." ";
-         echo $row->institutionRoleIds[0]." ";
-         echo $row->name->given."<br />";
+        if (($row->institutionRoleIds[0] != "STAFF") && ($row->name->given != "admin" && $row->name->given != "Blackboard")){
+         echo $row->name->given." ";
+         echo $row->name->family."<br />";
+    }
 }
 
 ?>
