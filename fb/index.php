@@ -34,7 +34,7 @@ if(isset($accessToken)){
         echo 'Graph returned an error: ' . $e->getMessage();
         session_destroy();
         // Redirect user back to app login page
-        header("Location: ./");
+        header("Location: ./"); 
         exit;
     } catch(FacebookSDKException $e) {
         echo 'Facebook SDK returned an error: ' . $e->getMessage();
@@ -79,7 +79,9 @@ if(isset($accessToken)){
         $output .= '<br/>Locale : '.$userData['locale'];
         $output .= '<br/>Logged in with : Facebook';
         $output .= '<br/>Profile Link : <a href="'.$userData['link'].'" target="_blank">Click to visit Facebook page</a>';
-        $output .= '<br/>Logout from <a href="'.$logoutURL.'">Facebook</a>'; 
+        $output .= '<br/>Logout from <a href="'.$logoutURL.'">Facebook</a>';
+	//go to textbox page
+	$output .= '<br/>Post your story <a href="storytelling.php">POST</a>'; 
     }else{
         $output = '<h3 style="color:red">Some problem occurred, please try again.</h3>';
     }
@@ -89,7 +91,7 @@ if(isset($accessToken)){
     $loginURL = $helper->getLoginUrl($redirectURL, $fbPermissions);
     
     // Render facebook login button
-    $output = '<a href="'.htmlspecialchars($loginURL).'"><img src="images/facebook-sign-in-button.png"></a>';
+    $output = '<a href="'.htmlspecialchars($loginURL).'"><img src="images/facebook-sign-in-button.png" height = 150 width =250></a>';
 }
 ?>
 <html>
