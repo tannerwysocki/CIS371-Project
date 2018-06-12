@@ -51,14 +51,38 @@ $(document).ready(function(){
   <br/>
   <!-- <input type = submit value = "Post" /> -->
   <button id  = "post"> Post </button>
-
+  
     </form></center>
-<?php
-//$receive = $_GET['include'];
 
-//echo $receive;
+<br/><br/>
+<div> <button type = "submit" name = "names" id  = "names"> Show Names </button
+</div>
+<style>
+#names {
+width: 50px;
+margin-right: auto;
+float: right;
+}
+
+</style>
+<?php
+$button1 = $_GET['include'];
+
+echo $button1;
+
+$button2 = $_GET['names'];
+//if(($button2)) {
+	//echo "<center>hello</center>";
+	//include("~/apache/htdocs/ribbit/CIS371-Project/bbnames.php");
+//	$file_path = "/home/student11/apache/htdocs/ribbit/CIS371-Project/bbnames.php";
+//	include("/home/student11/apache/htdocs/ribbit/CIS371-Project/bbnames.php");
+
+	//$content = file_get_contents($file_path);
+	//print $content;
+//}
 
 ?>
 
+<iframe src="https://cis371a.hopto.org:9011/ribbit/CIS371-Project/bbnames.php">
 
 </body>
