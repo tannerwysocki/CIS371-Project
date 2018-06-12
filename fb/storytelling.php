@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 <!-- including title -->
@@ -22,13 +23,16 @@ input[type=text] {
     left: -30px;
 }
 </style>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
 </script>
 <script>
 $(document).ready(function(){
     $("#post").click(function(){
-        $("p").append(" <b>Appended text</b>.");
+        $("p").append("#include");
     });
+});
+
 </script>
 </head>
 <body>
@@ -50,9 +54,9 @@ $(document).ready(function(){
 
     </form></center>
 <?php
-$receive = $_GET['include'];
+//$receive = $_GET['include'];
 
-echo $receive;
+//echo $receive;
 
 ?>
 
