@@ -34,7 +34,11 @@ if(isset($accessToken)){
         echo 'Graph returned an error: ' . $e->getMessage();
         session_destroy();
         // Redirect user back to app login page
+<<<<<<< HEAD
         header("Location: ./");
+=======
+        header("Location: ./"); 
+>>>>>>> 0fb8a20bc954259d4ab33534bd6c900e4a2ebae4
         exit;
     } catch(FacebookSDKException $e) {
         echo 'Facebook SDK returned an error: ' . $e->getMessage();
@@ -67,7 +71,11 @@ if(isset($accessToken)){
     
     // Render facebook profile data
     if(!empty($userData)){
+<<<<<<< HEAD
         $output  = '<h2 style="color:#999999;">Facebook Profile Details</h2>';
+=======
+        $output  = '<br><br><br><br><br><br><br><center><h2 style="color:#999999;">Facebook Profile Details</h2>';
+>>>>>>> 0fb8a20bc954259d4ab33534bd6c900e4a2ebae4
         $output .= '<div style="position: relative;">';
         $output .= '<img src="'.$userData['cover'].'" />';
         $output .= '<img style="position: absolute; top: 90%; left: 25%;" src="'.$userData['picture'].'"/>';
@@ -79,6 +87,7 @@ if(isset($accessToken)){
         $output .= '<br/>Locale : '.$userData['locale'];
         $output .= '<br/>Logged in with : Facebook';
         $output .= '<br/>Profile Link : <a href="'.$userData['link'].'" target="_blank">Click to visit Facebook page</a>';
+<<<<<<< HEAD
         $output .= '<br/>Logout from <a href="'.$logoutURL.'">Facebook</a>'; 
     }else{
         $output = '<h3 style="color:red">Some problem occurred, please try again.</h3>';
@@ -90,11 +99,35 @@ if(isset($accessToken)){
     
     // Render facebook login button
     $output = '<a href="'.htmlspecialchars($loginURL).'"><img src="images/facebook-sign-in-button.png"></a>';
+=======
+        $output .= '<br/>Logout from <a href="'.$logoutURL.'">Facebook</a>';
+	//go to textbox page
+	$output .= '<br/>Post your story <a href="storytelling.php">POST</a></center>';
+    }else{
+        $output = '<h3 style="color:red">Some problem occurred, please try again.</h3>';
+    }
+}else{
+    // Get login url
+    $loginURL = $helper->getLoginUrl($redirectURL, $fbPermissions);
+    // Render facebook login button
+    $output = '<br><br><br><br><br><br><br><br><br><center><img src="images/logo.png"></center><br><a href="'.htmlspecialchars($loginURL).'"><center><img src="images/facebook-sign-in-button.png" width="200" height="75"></center></a>';
+>>>>>>> 0fb8a20bc954259d4ab33534bd6c900e4a2ebae4
 }
 ?>
 <html>
 <head>
+<<<<<<< HEAD
 <title>Login with Facebook using PHP by CodexWorld</title>
+=======
+<title>Ribbit Login</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<style>
+* {
+    font-family: Roboto, sans-serif;
+    background-color: #87f3ff;
+}
+</style>
+>>>>>>> 0fb8a20bc954259d4ab33534bd6c900e4a2ebae4
 </head>
 <body>
     <!-- Display login button / Facebook profile information -->
