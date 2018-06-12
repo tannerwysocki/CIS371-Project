@@ -67,7 +67,7 @@ if(isset($accessToken)){
     
     // Render facebook profile data
     if(!empty($userData)){
-        $output  = '<h2 style="color:#999999;">Facebook Profile Details</h2>';
+        $output  = '<br><br><br><br><br><br><br><center><h2 style="color:#999999;">Facebook Profile Details</h2>';
         $output .= '<div style="position: relative;">';
         $output .= '<img src="'.$userData['cover'].'" />';
         $output .= '<img style="position: absolute; top: 90%; left: 25%;" src="'.$userData['picture'].'"/>';
@@ -81,22 +81,27 @@ if(isset($accessToken)){
         $output .= '<br/>Profile Link : <a href="'.$userData['link'].'" target="_blank">Click to visit Facebook page</a>';
         $output .= '<br/>Logout from <a href="'.$logoutURL.'">Facebook</a>';
 	//go to textbox page
-	$output .= '<br/>Post your story <a href="storytelling.php">POST</a>'; 
+	$output .= '<br/>Post your story <a href="storytelling.php">POST</a></center>';
     }else{
         $output = '<h3 style="color:red">Some problem occurred, please try again.</h3>';
     }
-    
 }else{
     // Get login url
     $loginURL = $helper->getLoginUrl($redirectURL, $fbPermissions);
-    
     // Render facebook login button
-    $output = '<a href="'.htmlspecialchars($loginURL).'"><img src="images/facebook-sign-in-button.png" height = 150 width =250></a>';
+    $output = '<br><br><br><br><br><br><br><br><br><center><img src="images/logo.png"></center><br><a href="'.htmlspecialchars($loginURL).'"><center><img src="images/facebook-sign-in-button.png" width="200" height="75"></center></a>';
 }
 ?>
 <html>
 <head>
-<title>Login with Facebook using PHP by CodexWorld</title>
+<title>Ribbit Login</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<style>
+* {
+    font-family: Roboto, sans-serif;
+    background-color: #87f3ff;
+}
+</style>
 </head>
 <body>
     <!-- Display login button / Facebook profile information -->
