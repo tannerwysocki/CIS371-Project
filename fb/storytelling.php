@@ -51,7 +51,7 @@ $(document).ready(function(){
   <br/>
   <!-- <input type = submit value = "Post" /> -->
   <button id  = "submit()"> submit </button>
-
+    </p>
     </form></center>
     <script>
     function submit(){
@@ -59,29 +59,37 @@ $(document).ready(function(){
         var newString = "";
         var finSentence = 0;
         for(i = 0; i < x.length; i++){
-            if (x[i] == "." && finSentence == 0){
-                newString = x.substring(0,i);
+            if (x[i] == "." || x[i] == ":" && finSentence == 0){
+                newString = x.substring(0,i+1);
                 i = x.length;
                 finSentence = 1;
             }
         }
-       // document.getElementById("test").innerHTML = newString;
+       //Send newstring (which contains the message) to the database here.
     }
 </script>
-
 
 <?php
 //making a connection
 $l=mysqli_connect("localhost:6306","student2","pass2","student2");
-$message = mysqli_escape_string($l,GET['message']);
+//$message = mysqli_escape_string($l,GET['message']);
+//Message is from the javascript above, through get(?)
 //$userID = mysqli_escape_string($l,GET['userID']);
 //putting query together
-$query = "insert into sentence (Message, UserID, Stamp) values ('$message', '$userID', now())";
+//$query = "insert into sentence (Message, UserID, Stamp) values ('$message', 'This needs to be the users name from facebook', now())";
 
 $query = "select * from sentence";
     //executing query
+    $totalMsg = "";
 $r = mysqli_query($l,$query);
+while($row=mysqli_fetch_array($r))
+{
+       // echo $totalMsg;
+      //  echo $row[Message];
+    $totalMsg = $totalMsg . $row[Message] ." ";
+}
 
+    echo $totalMsg;
 ?>
 
 

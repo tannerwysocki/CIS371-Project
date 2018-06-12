@@ -11,8 +11,8 @@
         var newString = "";
         var finSentence = 0;
         for(i = 0; i < x.length; i++){
-            if (x[i] == "." && finSentence == 0){
-                newString = x.substring(0,i);
+            if (x[i] == "." || x[i] == ":" && finSentence == 0){
+                newString = x.substring(0,i+1);
                 i = x.length;
                 finSentence = 1;
             }
