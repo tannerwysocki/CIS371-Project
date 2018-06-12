@@ -7,13 +7,14 @@
 </button>
 <script>
     function submit(){
-         document.getElementById("test").innerHTML = "oh hai mark";
         var x = document.getElementById("inputField").value;
         var newString = "";
+        var finSentence = 0;
         for(i = 0; i < x.length; i++){
-            if (x[i] == "."){
+            if (x[i] == "." && finSentence == 0){
                 newString = x.substring(0,i);
                 i = x.length;
+                finSentence = 1;
             }
         }
         document.getElementById("test").innerHTML = newString;
