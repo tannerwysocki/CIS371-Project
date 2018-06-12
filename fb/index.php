@@ -79,8 +79,9 @@ if(isset($accessToken)){
         $output .= '<br/>Locale : '.$userData['locale'];
         $output .= '<br/>Logged in with : Facebook';
         $output .= '<br/>Profile Link : <a href="'.$userData['link'].'" target="_blank">Click to visit Facebook page</a>';
-        $output .= '<br/>Logout from <a href="'.$logoutURL.'">Facebook</a></center>';
-    }else{
+	$output .= '<br/>Make a post <a href="storytelling.php">POST</a>';
+	$output .= '<br/>Logout from <a href="'.$logoutURL.'">Facebook</a></center>';
+	    }else{
         $output = '<h3 style="color:red">Some problem occurred, please try again.</h3>';
     }
 
