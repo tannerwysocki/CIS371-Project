@@ -46,13 +46,30 @@ $(document).ready(function(){
 <center><p> Welcome to the Story Telling Page! </p>
 <br/><br/>
 <form>
-  <label for="include"> Post your portion of the story<br/></label>
+  <label for="include"> Submit your portion of the story<br/></label>
   <input type="text" id= "include" name="include">
   <br/>
   <!-- <input type = submit value = "Post" /> -->
-  <button id  = "post"> Post </button>
+  <button id  = "submit()"> submit </button>
 
     </form></center>
+    <script>
+    function submit(){
+        var x = document.getElementById("include").value;
+        var newString = "";
+        var finSentence = 0;
+        for(i = 0; i < x.length; i++){
+            if (x[i] == "." && finSentence == 0){
+                newString = x.substring(0,i);
+                i = x.length;
+                finSentence = 1;
+            }
+        }
+       // document.getElementById("test").innerHTML = newString;
+    }
+</script>
+
+
 <?php
 //$receive = $_GET['include'];
 
