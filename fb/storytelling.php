@@ -68,18 +68,6 @@ $(document).ready(function(){
        //Send newstring (which contains the message) to the database here.
     }
 
-        function loadDoc() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("demo").innerHTML =
-                        this.responseText;
-                }
-            };
-            xhttp.open("post", "form.php", true);
-            xhttp.send("UserID:");
-        }
-
 </script>
 
 <?php
