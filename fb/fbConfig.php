@@ -14,9 +14,9 @@ use Facebook\Exceptions\FacebookSDKException;
 /*
  * Configuration and setup Facebook SDK
  */
-$appId         = '2055012101493292'; //Facebook App ID
-$appSecret     = '39253e9298eec833f077b8650bd37e39'; //Facebook App Secret
-$redirectURL   = 'https://cis371a.hopto.org:9011/ribbit/CIS371-Project/fb/'; //Callback URL
+$appId         = '179923732716252'; //Facebook App ID
+$appSecret     = 'dbece49af80bff0a4cd51ce5c988b011'; //Facebook App Secret
+$redirectURL   = 'https://tantheman.hopto.org:9003/CIS371-Project/fb/'; //Callback URL
 $fbPermissions = array('email');  //Optional permissions
 
 $fb = new Facebook(array(
