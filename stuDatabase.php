@@ -5,12 +5,11 @@
 */
 //print_r($_POST);
 //making a connection
-$l=mysqli_connect("localhost:6306","student2","pass2","student2");
 //$message = mysqli_escape_string($l,$_POST['message']);
 //$userID = mysqli_escape_string($l,$_POST['userID']);
-$student = 'Antony';
 //putting query together
 //$query = "insert into sentence'$student' (Message, UserID, Stamp) values ('$message', '$userID', now())";
+
 $l=mysqli_connect("localhost:6306","student2","pass2","student2");
 $query = "select * from sentence";
     //executing query

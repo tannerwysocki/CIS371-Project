@@ -71,9 +71,16 @@ $(document).ready(function(){
 
 
 <?php
-//$receive = $_GET['include'];
+//making a connection
+$l=mysqli_connect("localhost:6306","student2","pass2","student2");
+$message = mysqli_escape_string($l,GET['message']);
+//$userID = mysqli_escape_string($l,GET['userID']);
+//putting query together
+$query = "insert into sentence (Message, UserID, Stamp) values ('$message', '$userID', now())";
 
-//echo $receive;
+$query = "select * from sentence";
+    //executing query
+$r = mysqli_query($l,$query);
 
 ?>
 
