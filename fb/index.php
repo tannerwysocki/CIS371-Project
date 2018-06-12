@@ -97,7 +97,7 @@ if(isset($accessToken)){
 <title>Ribbit Login</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <style>
-* {
+ {
     font-family: Roboto, sans-serif;
     background-color: #87f3ff;
 }
