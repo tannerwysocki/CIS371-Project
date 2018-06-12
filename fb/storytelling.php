@@ -65,10 +65,11 @@ $(document).ready(function(){
                 finSentence = 1;
             }
         }
+        loadDoc(newString);
        //Send newstring (which contains the message) to the database here.
     }
 
-        function loadDoc() {
+        function loadDoc(msg) {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
@@ -76,8 +77,8 @@ $(document).ready(function(){
                         this.responseText;
                 }
             };
-            xhttp.open("post", "form.php", true);
-            xhttp.send("UserID:");
+            xhttp.open("POST", "form.php", true);
+            xhttp.send("message:"+msg"&userID:"+"Null");
         }
 
 </script>
@@ -85,12 +86,17 @@ $(document).ready(function(){
 <?php
 //making a connection
 $l=mysqli_connect("localhost:6306","student2","pass2","student2");
-//$message = mysqli_escape_string($l,GET['message']);
-//Message is from the javascript above, through get(?)
-//$userID = mysqli_escape_string($l,GET['userID']);
-//putting query together
-//$query = "insert into sentence (Message, UserID, Stamp) values ('$message', 'This needs to be the users name from facebook', now())";
-
+if ($_POST['message'] != null || $_POST['userID'] != null){
+    $message = mysqli_escape_string($l,$_POST['message']);
+    //Message is from the javascript above, through get(?)
+    $userID = mysqli_escape_string($l,$_POST['userID']);
+    //putting query together
+    $query = "insert into sentence (Message, UserID, Stamp) values ('$message', '$userID', now())";
+    $r = mysqli_query($l, $query);
+}
+    else{
+        echo "It didn't work.";
+    }
 $query = "select * from sentence";
     //executing query
     $totalMsg = "";
