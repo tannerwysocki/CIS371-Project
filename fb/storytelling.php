@@ -2,7 +2,7 @@
  session_start();
 ?>
 <!DOCTYPE html>
-<html>
+<htm>
 <head>
 <!-- including title -->
 <title>Combined Story Telling</title>
@@ -134,7 +134,14 @@ $(document).ready(function(){
 
 </script>
 </div>
-<iframe id="storyBase" width:"400" height="600" src="storyBase.php"></iframe>
-
+<iframe id="storyBase" width:"400" height="600" src="storyBase.php" align='center'></iframe>
+<style>
+    iframe {
+    width: 400px;
+    height: 600px;
+    margin: 0 auto;
+    display: block;
+}
+</style>
 
 </body>
