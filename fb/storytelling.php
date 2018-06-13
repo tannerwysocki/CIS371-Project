@@ -127,36 +127,14 @@ $(document).ready(function(){
 
         // stop the form from submitting the normal way and refreshing the page
         event.preventDefault();
+        document.getElementById('storyBase').contentWindow.location.reload();
     });
 
 });
 
 </script>
 </div>
-<?php
-    $l=mysqli_connect("localhost:6306","student2","pass2","student2");
-    $query = "select * from sentence";
-    //executing query
-    $r = mysqli_query($l,$query);
-    echo "<div id='data'>";
-    echo "<table cellpadding=10 bordercolor='#000000' id='posts'>";
-    echo "<tr><th>Message</th><th>User</th><th>Time</th></tr>";
-    while($row=mysqli_fetch_array($r))
-    {
-        echo "<tr>";
-            echo "<td>";
-                echo $row[Message];
-            echo "</td><td>";
-                echo "$row[UserID]";
-            echo "</td><td>";
-                echo $row[Stamp];
-            echo "</td>";
-
-        echo "</tr>";
-    }
-    echo "</table>";
-    echo "</div>";
-?>
+<iframe id="storyBase" width:"400" height="600" src="storyBase.php"></iframe>
 
 
 </body>
