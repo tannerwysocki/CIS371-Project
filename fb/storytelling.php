@@ -77,14 +77,19 @@ $(document).ready(function(){
                         this.responseText;
                 }
             };
-            xhttp.open("POST", "form.php", true);
-            xhttp.send("message:"+msg"&userID:"+"Null");
+            xhttp.open("POST", "storytelling.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("message="+msg"&userID="+"hi");
         }
 
 </script>
 
 <?php
 //making a connection
+    echo "at least I got here";
+    echo $_REQUEST['message'];
+    echo $_REQUEST['userID'];
+
 $l=mysqli_connect("localhost:6306","student2","pass2","student2");
 if ($_POST['message'] != null || $_POST['userID'] != null){
     $message = mysqli_escape_string($l,$_POST['message']);
