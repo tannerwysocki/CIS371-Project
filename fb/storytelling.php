@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
 <html>
 <head>
 <!-- including title -->
@@ -24,18 +27,22 @@ input[type=text] {
 }
 </style>
 
+</head>
+<body>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
 </script>
+
 <script>
+var el = document.getElementById("include");
 $(document).ready(function(){
     $("#post").click(function(){
-        $("p").append("#include");
+        $("#starter").append(el);
     });
 });
 
 </script>
-</head>
-<body>
+
 <img src="images/logo.png" id="logo">
 <br>
 <br>
@@ -45,20 +52,26 @@ $(document).ready(function(){
 <br>
 <center><p> Welcome to the Story Telling Page! </p>
 <br/><br/>
-<form>
+<!--<form>-->
   <label for="include"> Post your portion of the story<br/></label>
-  <input type="text" id= "include" name="include">
+  <!--<input type="text" id= "include" name="include">-->
+  <input type="text" id= "include">
+
   <br/>
   <!-- <input type = submit value = "Post" /> -->
   <button id  = "post"> Post </button>
   
-    </form></center>
+<!--</form>-->
+
+</center>
 
 <br/><br/>
-<div> <button type = "submit" name = "names" id  = "names"> Show Names </button
+<div id="starter">
+</div>
+<div> <button type = "submit" name = "shownames" id="shownames"> Show Names </button>
 </div>
 <style>
-#names {
+#shownames {
 width: 50px;
 margin-right: auto;
 float: right;
@@ -70,19 +83,20 @@ $button1 = $_GET['include'];
 
 echo $button1;
 
-$button2 = $_GET['names'];
-//if(($button2)) {
+$button2=$_POST['shownames'];
+if(isset($button2)) {
 	//echo "<center>hello</center>";
 	//include("~/apache/htdocs/ribbit/CIS371-Project/bbnames.php");
 //	$file_path = "/home/student11/apache/htdocs/ribbit/CIS371-Project/bbnames.php";
 //	include("/home/student11/apache/htdocs/ribbit/CIS371-Project/bbnames.php");
-
+echo '<iframe src="https://cis371a.hopto.org:9011/ribbit/CIS371-Project/bbnames.php">
+';
 	//$content = file_get_contents($file_path);
 	//print $content;
-//}
+}
 
 ?>
 
-<iframe src="https://cis371a.hopto.org:9011/ribbit/CIS371-Project/bbnames.php">
 
 </body>
+</html>
