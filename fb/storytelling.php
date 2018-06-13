@@ -145,7 +145,7 @@ $(document).ready(function(){
 </style>
 <br/><br/>
 <div align="center">
-    <button type = "submit" name = "names" id  = "names"> Show Names </button>
+<!--  <button type = "submit" name = "names" id  = "names"> Show Names </button>//-->
 </div>
 <br><br>
 <style>
@@ -162,7 +162,7 @@ $button1 = $_GET['include'];
 
 echo $button1;
 
-$button2 = $_GET['names'];
+//$button2 = $_GET['names'];
 //if(($button2)) {
 	//echo "<center>hello</center>";
 	//include("~/apache/htdocs/ribbit/CIS371-Project/bbnames.php");
@@ -175,8 +175,8 @@ $button2 = $_GET['names'];
 //}
 
 ?>
-
-<iframe src="https://tantheman.hopto.org:9003/CIS371-Project/bbnames.php" align='center'>
+    <center><label for="bbusers" id=userslabel>Registered Blackboard Users<br/></label></center>
+<iframe src="https://tantheman.hopto.org:9003/CIS371-Project/bbnames.php" align='center' id="bbusers">
 
 </body>
 
