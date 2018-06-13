@@ -143,5 +143,42 @@ $(document).ready(function(){
     display: block;
 }
 </style>
+<br/><br/>
+<div align="center">
+    <button type = "submit" name = "names" id  = "names"> Show Names </button>
+</div>
+<br><br>
+<style>
+#names {
+    width: 50px;
+    margin-right: auto;
+    float: right;
+}
+
+</style>
+ <?php
+//$receive = $_GET['include'];
+$button1 = $_GET['include'];
+
+echo $button1;
+
+$button2 = $_GET['names'];
+//if(($button2)) {
+	//echo "<center>hello</center>";
+	//include("~/apache/htdocs/ribbit/CIS371-Project/bbnames.php");
+//	$file_path = "/home/student11/apache/htdocs/ribbit/CIS371-Project/bbnames.php";
+//	include("/home/student11/apache/htdocs/ribbit/CIS371-Project/bbnames.php");
+
+//echo $receive;
+	//$content = file_get_contents($file_path);
+	//print $content;
+//}
+
+?>
+
+<iframe src="https://tantheman.hopto.org:9003/CIS371-Project/bbnames.php" align='center'>
 
 </body>
+
+</body>
+
