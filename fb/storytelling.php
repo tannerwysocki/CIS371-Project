@@ -106,7 +106,7 @@ $(document).ready(function(){
         // get the form data
         // there are many ways to get this data using jQuery (you can use the class or id also)
         var formData = {
-            'message'              : $("#include").val()
+            'message'              : addToDB()
         };
 
         // process the form

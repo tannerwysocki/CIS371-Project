@@ -6,7 +6,7 @@
 
 </button>
 <script>
-    function submit(){
+       function submit(){
         var x = document.getElementById("inputField").value;
         var newString = "";
         var finSentence = 0;
@@ -17,6 +17,8 @@
                 finSentence = 1;
             }
         }
+   //     Send newstring (which contains the message) to the database here.
+
         document.getElementById("test").innerHTML = newString;
     }
 </script>
