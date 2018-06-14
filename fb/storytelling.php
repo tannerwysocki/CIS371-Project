@@ -1,14 +1,14 @@
-<!DOCTYPE html>
 <?php
-session_start();
+ session_start();
 ?>
+<!DOCTYPE html>
 <html>
 <head>
 <!-- including title -->
 <title>Combined Story Telling</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <style>
-/** including CSS sizing **/
+/** including CSS sizing and background  **/
 input[type=text] {
 	width:60%;
 	padding:12px 20px;
@@ -20,81 +20,142 @@ input[type=text] {
     font-family: Roboto;
     background-color: #87f3ff;
 }
+th,td{
+    background-color: #ffffff;
+    border-color: #000000;
+}
 #logo{
     position: absolute;
     top: -50px;
     left: -30px;
 }
+#data {
+    overflow:scroll;
+    height:300px;
+}
+table {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
 </style>
-
-</head>
-<body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
 </script>
-
 <script>
-var el = document.getElementById("include");
 $(document).ready(function(){
     $("#post").click(function(){
-        $("#starter").append(el);
+        $("p").append("#include");
     });
 });
 
 </script>
-
+</head>
+<body>
 <img src="images/logo.png" id="logo">
+<div id="content">
 <br>
 <br>
 <br>
 <br>
 <br>
 <br>
-<center><p> Welcome to the Story Telling Page! </p>
+<center><p id="greeting">Welcome to the Story Telling Page! </p>
 <br/><br/>
-<!--<form>-->
-  <label for="include"> Post your portion of the story<br/></label>
-  <!--<input type="text" id= "include" name="include">-->
-  <input type="text" id= "include">
-
+<form action="insert.php">
+  <label for="include" id=label> Submit your portion of the story<br/></label>
+  <input type="text" id= "include" name="include">
   <br/>
   <!-- <input type = submit value = "Post" /> -->
-  <button id  = "post"> Post </button>
-  
-<!--</form>-->
+  <button type = "submit" id = "submit()"> submit </button>
+    </p>
+    </form></center>
+    <script>
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        alert("Welcome to Ribbit for Mobile");
+        $("#logo").remove();
+        $("<img src='images/logo.png' id='logo' style='display: block; margin-left: auto; margin-right: auto; width: 50%;'><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>").insertBefore("#content");
+        document.getElementById('greeting').style.fontSize = "50px";
+        document.getElementById('label').style.fontSize = "40px";
+        document.getElementById('include').style.fontSize = "30px";
+        document.getElementById('include').style.width = "800px";
+        document.getElementById('include').style.height = "200px";
+        document.getElementById('submit()').style.width="400px";
+        document.getElementById('submit()').style.height="100px";
+    }
+    function addToDB(){
+        var x = document.getElementById("include").value;
+        var newString = "";
+        var finSentence = 0;
+        for(i = 0; i < x.length; i++){
+            if (x[i] == "." || x[i] == ":" && finSentence == 0){
+                newString = x.substring(0,i+1);
+                i = x.length;
+                finSentence = 1;
+            }
+        }
+   //     Send newstring (which contains the message) to the database here.
+        return newString;
+    }
+    // magic.js
+    $(document).ready(function() {
 
-</center>
+    // process the form
+    $('form').submit(function(event) {
 
-<br/><br/>
-<div id="starter">
+        // get the form data
+        // there are many ways to get this data using jQuery (you can use the class or id also)
+        var formData = {
+            'message'              : $("#include").val()
+        };
+
+        // process the form
+        $.ajax({
+            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url         : 'insert.php', // the url where we want to POST
+            data        : formData, // our data object
+            dataType    : 'json', // what type of data do we expect back from the server
+            encode      : true
+        })
+            // using the done promise callback
+            .done(function(data) {
+
+                // log data to the console so we can see
+                console.log(data);
+                // here we will handle errors and validation messages
+            });
+
+        // stop the form from submitting the normal way and refreshing the page
+        event.preventDefault();
+    });
+
+});
+
+</script>
 </div>
-<div> <button type = "submit" name = "shownames" id="shownames"> Show Names </button>
-</div>
-<style>
-#shownames {
-width: 50px;
-margin-right: auto;
-float: right;
-}
-
-</style>
 <?php
-$button1 = $_GET['include'];
+    $l=mysqli_connect("localhost:6306","student2","pass2","student2");
+    $query = "select * from sentence";
+    //executing query
+    $r = mysqli_query($l,$query);
+    echo "<div id='data'>";
+    echo "<table cellpadding=10 bordercolor='#000000' id='posts'>";
+    echo "<tr><th>Message</th><th>User</th><th>Time</th></tr>";
+    while($row=mysqli_fetch_array($r))
+    {
+        echo "<tr>";
+            echo "<td>";
+                echo $row[Message];
+            echo "</td><td>";
+                echo "$row[UserID]";
+            echo "</td><td>";
+                echo $row[Stamp];
+            echo "</td>";
 
-echo $button1;
-
-$button2=$_POST['shownames'];
-if(isset($button2)) {
-	//echo "<center>hello</center>";
-	//include("~/apache/htdocs/ribbit/CIS371-Project/bbnames.php");
-//	$file_path = "/home/student11/apache/htdocs/ribbit/CIS371-Project/bbnames.php";
-//	include("/home/student11/apache/htdocs/ribbit/CIS371-Project/bbnames.php");
-echo '<iframe src="https://cis371a.hopto.org:9011/ribbit/CIS371-Project/bbnames.php">
-';
-	//$content = file_get_contents($file_path);
-	//print $content;
-}
-
+        echo "</tr>";
+    }
+    echo "</table>";
+    echo "</div>";
 ?>
 
 
